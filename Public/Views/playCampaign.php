@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--MAIN CSS-->
-    <link rel="stylesheet" href="../css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="public/css/style.css" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 
 </head>
@@ -22,22 +22,16 @@
             <h2>PERFECTT</h2>
             <div>
                 <button id="b1">New Game</button>
-                <button id="b2" onclick="scores.style.display = 'flex'">High Scores</button>
+                <button id="b2" onclick="scores.style.display = 'flex'">Level Info</button>
                 <button id="b3">Credits</button>
             </div>
-            <p id="credits">PZ 2022 &copy; All rights reserved</p>
+            <p id="credits">PZ 2024 &copy; All rights reserved</p>
         </div>
         <section id="scores" class="highscores">
             <div>
                 <div>
-                    <h4>LATEST WINNERS</h4>
+                    <h4>Level Info</h4>
                     <div id="best">
-                        <p>Lint<span>1232</span></p>
-                        <p>Lint<span>1232</span></p>
-                        <p>Lint<span>1232</span></p>
-                        <p>Lint<span>1232</span></p>
-                        <p>Lint<span>1232</span></p>
-                        <p>Lint<span>1232</span></p>
                         <p>Lint<span>1232</span></p>
                     </div>
                     <button onclick="scores.style.display = 'none'">OK</button>
@@ -79,7 +73,6 @@
     <div class="levelHidd"></div>
 	
     <!-- JAVASCRIPT -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/javascript.js" type="text/javascript"></script>
+    <script src="public/js/javascript.js" type="text/javascript"></script>
 </body>
 </html>

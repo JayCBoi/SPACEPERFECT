@@ -2,21 +2,37 @@
 
 class UserMap {
 
-    private $title
+    private $id_user_map;
+    private $author;
+    private $title;
     private $map_code;
     private $difficulty;
     private $clears;
     private $crashes;
     private $created_at;
 
-    public function __construct (string $title, string $map_code, int $difficulty, int $clears, int $crashes, string $created_at) {
+    public function __construct (int $id_user_map, string $author, string $title, string $map_code, int $difficulty, int $clears, int $crashes, string $created_at) {
         
+        $this->id_user_map = $id_user_map;
+        $this->author = $author;
         $this->title = $title;
         $this->map_code = $map_code;
         $this->difficulty = $difficulty;
         $this->clears = $clears;
         $this->crashes = $crashes;
         $this->created_at = $created_at;
+
+    }
+
+    public function getIdUserMap(): int {
+
+        return $this->id_user_map;
+
+    }
+
+    public function getAuthor(): string {
+
+        return $this->author;
 
     }
 
@@ -84,12 +100,6 @@ class UserMap {
 
         return $this->created_at;
 
-    }
-
-    public function setMapCode(string $created_at) {
-
-        $this->created_at = $created_at;
-        
     }
 
 }

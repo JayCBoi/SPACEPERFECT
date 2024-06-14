@@ -19,7 +19,7 @@
         <div>
             <h2 class="game-title"><span>SPACE</span><wbr><span>PERFECT</span></h2>
             <p id="welcome-message">Be fast. Be <i>focused</i>. Be perfect.</p>
-            <form>
+            <form action="signUp" method="POST">
                 <div>
                     <p class="form-paragraph">Sign up</p>
                     <input name="login" type="text" placeholder="Login"/>
@@ -28,7 +28,17 @@
                     <input name="confirmPassword" type="password" placeholder="Password(again)"/>
                     <button class="form-button" type="submit">Sign up</button>
                 </div>
-
+                
+                    <?php if(isset($messages)){
+                        echo '<p class="validation-message">';
+                        foreach($messages as $message){
+                            echo $message;
+                        };
+                        echo '</p>';
+                    }
+                    ?>
+                
+                
                 <br>
                 <br>
                 <div>

@@ -2,7 +2,7 @@
 
 class CampaignMap {
 
-    private $title
+    private $title;
     private $map_index;
     private $map_code;
 

@@ -27,12 +27,14 @@
                     <button class="form-button" type="submit">GO</button>
                 </div>
                 
-                <?php if(isset($messages)){
-                    foreach($messages as $message){
-                        echo $message;
+                    <?php if(isset($messages)){
+                        echo '<p class="validation-message">';
+                        foreach($messages as $message){
+                            echo $message;
+                        };
+                        echo '</p>';
                     }
-                }
-                ?>
+                    ?>
                 <br>
                 <br>
                 <div>

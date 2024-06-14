@@ -15,28 +15,38 @@
 <body>
     <div class="main-menu">
         <div class="top-text">
-            <h2 class="game-title"><span>SPACE</span><span>PERFECT</span></h2>
-            <p id="random-welcome-message">Hi there <?php if(isset($user)){ echo $user->getLogin();}?><wbr><span id="random-message">, reach for the stars!</span></p>
+            <h2 class="game-title">
+                <?php if(isset($messages)){
+                        echo '<p class="validation-message">';
+                        foreach($messages as $message){
+                            echo $message;
+                        };
+                        echo '</p>';
+                    }
+                ?>  
+                <span>SPACE</span><span>PERFECT</span>
+            </h2>
+            <p id="random-welcome-message">Hi there <?php echo $_SESSION['user']->getLogin();?><wbr><span id="random-message">, reach for the stars!</span></p>
+                      
         </div>
 
         <div class="centered-buttons">
             <div class="main-menu-buttons">
                 <div class="first-two">
                     <div>
-                        <a href="">QUICK<br> PLAY</a>
+                        <a href="levelSelect">LEVEL SELECT</a>
                     </div>
                     <div>
-                        <a href="">LEVEL SELECT</a>
+                        <a href="">EDITOR</a>
                     </div>
                     
                 </div>
                 <div class="second-two">
                     <div>
-                        <a href="logout">Logout</a>
-                        <!--<a href="">LEVEL EDITOR</a>-->
+                        <a href="logout">LOGOUT</a>
                     </div>
                     <div>
-                        <a href="">OPTIONS</a>
+                        <a href="options">OPTIONS</a>
                     </div>
     
                 </div>

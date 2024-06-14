@@ -16,6 +16,6 @@ class MainMenuController extends AppController {
 
         }
 
-        $this->render('mainMenu', ['user' => $_SESSION['user']]);
+        $this->render('mainMenu');
     }
 }

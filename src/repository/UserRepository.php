@@ -19,6 +19,8 @@ class UserRepository extends Repository {
             return null;
         }
 
+        
+
         return new User(
             $user['id_users'],
             $user['login'],
@@ -51,5 +53,19 @@ class UserRepository extends Repository {
         ]);
 
     }
+
+    public function updatePassword(int $userId, string $newPassword): void {
+
+        $newPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+
+        $stmt = $this->database->connect()->prepare(
+            'UPDATE users SET passwd = :newPassword WHERE id_users = :userId'
+        );
+        $stmt->bindParam(':newPassword', $newPassword, PDO::PARAM_STR);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+
+    }
+
 
 }

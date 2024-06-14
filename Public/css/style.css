@@ -4,14 +4,14 @@
 	--main-border-radius: 15px;
 	--main-light-color: white;
 	--main-dark-color: black;
-
+	--validation-color: red;
 	--main-transition-time: 0.3s;
 
 }
   
-
 /*MAIN CSS*/
 *{margin:0; padding:0;}
+
 body{margin:0;padding: 0;height: 100vh;overflow: hidden;font-family: 'Press Start 2P', cursive;color:var(--main-light-color);}
 html{font-size:20px;}
 
@@ -249,7 +249,7 @@ html{font-size:20px;}
 }
 
 .your-levels{
-	max-height: 33%;
+	max-height: 37%;
 }
 
 .campaign-levels a{
@@ -438,11 +438,12 @@ html{font-size:20px;}
 	border: 3px solid var(--main-light-color);
 	transition: var(--main-transition-time);
 	z-index: 2;
-	border-radius: 0;
+	
+	border-radius: 7px;
 }
 
 .back-to-menu:hover{
-	border-radius: var(--main-border-radius);
+	border-radius: 0;
 	background-color: var(--main-dark-color);
 	color: var(--main-light-color);
 }
@@ -463,6 +464,23 @@ html{font-size:20px;}
 	color: var(--main-dark-color);
 	transition: var(--main-transition-time);
 }
+
+.options-button a, .form-button a{
+	text-decoration: none;
+	color:inherit;
+}
+
+
+
+.validation-message{
+	color: var(--validation-color);
+	font-size: 11px;
+	text-align: justify;
+	padding: 2px;
+	border: 2px dashed var(--validation-color);
+	
+}
+
 
 /*ENDGAME*/
 .endwin,.endlose{

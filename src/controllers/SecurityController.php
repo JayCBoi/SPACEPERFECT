@@ -48,7 +48,9 @@ class SecurityController extends AppController {
         $user = $userRepository->getUser($login);
 
         if(!$user) {
+
             return $this->render('login', ['messages' => ['No such user']]);
+
         }
 
         if ($user->getLogin() !== $login) {
@@ -57,12 +59,13 @@ class SecurityController extends AppController {
 
         }
 
-        if ($user->getPassword() !== $password) {
+        if (!password_verify($password, $user->getPassword())) {
 
             return $this->render('login', ['messages' => ['Wrong password']]);
-            
+
         }
 
+        
         
         $_SESSION['user'] = $user;
 
@@ -91,6 +94,32 @@ class SecurityController extends AppController {
         $password = $_POST["password"];
         $confirmPassword = $_POST["confirmPassword"];
 
+
+        //EMPTY
+        if( empty($login) || empty($email) || empty($password) || empty($confirmPassword)){
+            return $this->render('signUp', ['messages' => ['All fields must be filled!']]);
+        }
+        
+        //IF REAL EMAIL
+        $regex = '/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/';
+
+        if(!preg_match($regex, $email)){
+            return $this->render('signUp', ['messages' => ['Not a real email!']]);
+        }
+
+        //LOGIN
+        $regex = '/^[A-Za-z]{4,10}$/';
+        if(!preg_match($regex, $login)){
+            return $this->render('signUp', ['messages' => ['Login must be 4-10 characters, only letters!']]);
+        }
+
+        //PASSWORD
+        $regex = '/^(?=.*\d)[A-Za-z\d]{6,}$/';
+        if(!preg_match($regex, $password)){
+            return $this->render('signUp', ['messages' => ['Password has to be min. 6 characters including 1 number!']]);
+        }
+
+        //SAME PASSWORDS
         if ($password !== $confirmPassword) {
             return $this->render('signUp', ['messages' => ['Passwords do not match!']]);
         }
@@ -104,10 +133,57 @@ class SecurityController extends AppController {
         
 
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-        $user = new User(null, $login, $email, $hashedPassword, null, null, null, null, null, null);
+        $user = new User(0, $login, $email, $hashedPassword, 0, '', 0, 0, 0, 0);
         $userRepository->addUser($user);
 
         return $this->render('login', ['messages' => ['You have been successfully registered!']]);
+    }
+
+    public function options() {
+
+        session_start();
+        if (!isset($_SESSION['user'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+        }
+
+        return $this->render('options');
+
+    }
+
+    public function changePassword() {
+
+        session_start();
+        if (!isset($_SESSION['user'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+            exit();
+        }
+
+        if (!$this->isPost()) {
+            return $this->render('options');
+        }
+
+        $newPassword = $_POST['new_password'];
+        $confirmPassword = $_POST['confirm_password'];
+
+
+        //SAME PASSWORD
+        if ($newPassword !== $confirmPassword) {
+            return $this->render('options', ['messages' => ['Passwords do not match']]);
+        }
+
+        //PASSWORD REQ
+        $regex = '/^(?=.*\d)[A-Za-z\d]{6,}$/';
+        if(!preg_match($regex, $newPassword)){
+            return $this->render('options', ['messages' => ['Password has to be min. 6 characters including 1 number!']]);
+        }
+
+        $userRepository = new UserRepository();
+        $userRepository->updatePassword($_SESSION['user']->getUserId(), $newPassword);
+
+        return $this->render('options', ['messages' => ['Password changed successfully']]);
+
     }
 
     public function logout() {

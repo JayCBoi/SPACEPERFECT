@@ -13,7 +13,9 @@ class User {
     private $crashes;
     private $maps_built;
 
-    public function __construct (int $user_id, string $login, string $email, string $password, string $account_type, string $created_at, int $levels_cleared, int $campaign_levels_cleared, int $crashes, int $maps_built) {
+    private $created_at_date;
+
+    public function __construct (int $user_id, string $login, string $email, string $password, int $account_type, string $created_at, int $levels_cleared, int $campaign_levels_cleared, int $crashes, int $maps_built) {
         
         $this->user_id = $user_id;
         $this->login = $login;
@@ -26,11 +28,32 @@ class User {
         $this->crashes = $crashes;
         $this->maps_built = $maps_built;
 
+        $this->changeToDate();
+
+    }
+
+    public function changeToDate() {
+
+        $dateTime = new DateTime($this->created_at);
+        $this->created_at_date = $dateTime->format('d-m-Y');
+
+    }
+
+    public function getCreatedAtDate(): string{
+
+        return $this->created_at_date;
+
     }
 
     public function getUserId(): int {
 
         return $this->user_id;
+
+    }
+
+    public function getUserAccountType(): int {
+
+        return $this->account_type;
 
     }
 
@@ -78,7 +101,7 @@ class User {
 
     public function getLevelsCleared(): int {
 
-        return $this->leves_cleared;
+        return $this->levels_cleared;
 
     }
 
@@ -90,7 +113,7 @@ class User {
 
     public function getCampaignLevelsCleared(): int {
 
-        return $this->leves_cleared;
+        return $this->levels_cleared;
 
     }
 
