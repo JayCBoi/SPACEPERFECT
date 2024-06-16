@@ -5,6 +5,7 @@ require_once 'src/controllers/SecurityController.php';
 require_once 'src/controllers/MainMenuController.php';
 require_once 'src/controllers/LevelSelectController.php';
 require_once 'src/controllers/PlayController.php';
+require_once 'src/controllers/MapEditorController.php';
 
 class Routing {
 

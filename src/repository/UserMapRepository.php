@@ -65,7 +65,6 @@ class UserMapRepository extends Repository {
 
         return new UserMap(
             $userMap['id_users_maps'],
-            $userMap['id_users'],
             $userMap['author'],
             $userMap['title'],
             $userMap['map_code'],
@@ -75,6 +74,26 @@ class UserMapRepository extends Repository {
             $userMap['created_at']
         );
         
+    }
+
+    public function deleteUserMap(int $mapId): void{
+
+        $stmt = $this->database->connect()->prepare('DELETE FROM users_maps WHERE id_users_maps = :mapId');
+        $stmt->bindParam(':mapId', $mapId, PDO::PARAM_INT);
+        $stmt->execute();
+        
+    }
+
+    public function uploadUserMap(int $userId, string $userLogin, string $mapTitle, string $mapCode, int $mapDifficulty): void{
+        
+        $stmt = $this->database->connect()->prepare('INSERT INTO users_maps (id_users, author, title, map_code, difficulty) values (:userId, :userLogin, :mapTitle, :mapCode, :mapDifficulty)');
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->bindParam(':userLogin', $userLogin, PDO::PARAM_STR);
+        $stmt->bindParam(':mapTitle', $mapTitle, PDO::PARAM_STR);
+        $stmt->bindParam(':mapCode', $mapCode, PDO::PARAM_STR);
+        $stmt->bindParam(':mapDifficulty', $mapDifficulty, PDO::PARAM_INT);
+        $stmt->execute();
+
     }
 
 }

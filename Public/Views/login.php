@@ -47,6 +47,6 @@
     </div>
 	
     <!-- JAVASCRIPT -->
-    <script src="public/js/javascript.js" type="text/javascript"></script>
+    <script src="" type="text/javascript"></script>
 </body>
 </html>

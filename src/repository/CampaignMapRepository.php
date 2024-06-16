@@ -58,4 +58,14 @@ class CampaignMapRepository extends Repository {
         );
     }
 
+    public function uploadCampaignMap(string $title, int $mapIndex, string $mapCode): void{
+
+        $stmt = $this->database->connect()->prepare('INSERT INTO campaign_maps (title, map_index, map_code) VALUES(:title, :mapIndex, :mapCode)');
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':mapIndex', $mapIndex, PDO::PARAM_INT);
+        $stmt->bindParam(':mapCode', $mapCode, PDO::PARAM_STR);
+        $stmt->execute();
+
+    }
+
 }

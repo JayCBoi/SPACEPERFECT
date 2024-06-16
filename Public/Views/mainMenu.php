@@ -13,6 +13,8 @@
 
 </head>
 <body>
+
+
     <div class="main-menu">
         <div class="top-text">
             <h2 class="game-title">
@@ -37,7 +39,7 @@
                         <a href="levelSelect">LEVEL SELECT</a>
                     </div>
                     <div>
-                        <a href="">EDITOR</a>
+                        <a href="mapEditor">EDITOR</a>
                     </div>
                     
                 </div>
@@ -56,6 +58,6 @@
     </div>
 	
     <!-- JAVASCRIPT -->
-    <script src="public/js/javascript.js" type="text/javascript"></script>
+    <script src="" type="text/javascript"></script>
 </body>
 </html>

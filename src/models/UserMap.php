@@ -10,6 +10,7 @@ class UserMap {
     private $clears;
     private $crashes;
     private $created_at;
+    private $created_at_date;
 
     public function __construct (int $id_user_map, string $author, string $title, string $map_code, int $difficulty, int $clears, int $crashes, string $created_at) {
         
@@ -21,6 +22,21 @@ class UserMap {
         $this->clears = $clears;
         $this->crashes = $crashes;
         $this->created_at = $created_at;
+
+        $this->changeToDate();
+
+    }
+
+    public function changeToDate() {
+
+        $dateTime = new DateTime($this->created_at);
+        $this->created_at_date = $dateTime->format('d-m-Y');
+
+    }
+
+    public function getCreatedAtDate(): string{
+
+        return $this->created_at_date;
 
     }
 

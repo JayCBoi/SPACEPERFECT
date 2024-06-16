@@ -13,7 +13,6 @@
 
 </head>
 <body>
-    
     <div class="main-menu">
         <div class="top-text">
             
@@ -32,7 +31,7 @@
                 <div class="details">
                     <h5>ACCOUNT DETAILS</h5>
                     <p>Login:<span><?php echo $_SESSION['user']->getLogin(); ?></span></p>
-                    <p>Email:<span><?php echo $_SESSION['user']->getCrashes(); ?></span></p>
+                    <p>Email:<span><?php echo $_SESSION['user']->getEmail(); ?></span></p>
                     <p>Registration date:<span><?php echo $_SESSION['user']->getCreatedAtDate(); ?></span></p>
 
                 </div>
@@ -57,6 +56,11 @@
                     <button class="options-button" type="button"><a href="logout">LOG OUT</a></button>
                 </div>
 
+                <div class="logout">
+                    <h5>Wanna <span class="alert">delete</span> your acc.?</h5>
+                    <button class="options-button" type="button"><a href="deleteAccount">DELETE</a></button>
+                </div>
+
             </div>
             <div class="right-section">
                 <div class="stats">
@@ -72,6 +76,6 @@
     </div>
 	
     <!-- JAVASCRIPT -->
-    <script src="js/javascript.js" type="text/javascript"></script>
+    <script src="" type="text/javascript"></script>
 </body>
 </html>

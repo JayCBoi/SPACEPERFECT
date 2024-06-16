@@ -17,7 +17,7 @@
     
     <div class="menu">
         <div>
-            <h2 class="game-title"><span>SPACE</span><wbr><span>PERFECT</span></h2>
+            <h2 class="game-title"><span>SPACE</span><wbr><br class="break"><span>PERFECT</span></h2>
             <p id="welcome-message">Be fast. Be <i>focused</i>. Be perfect.</p>
             <form action="signUp" method="POST">
                 <div>
@@ -51,6 +51,6 @@
     </div>
 	
     <!-- JAVASCRIPT -->
-    <script src="js/javascript.js" type="text/javascript"></script>
+    <script src="" type="text/javascript"></script>
 </body>
 </html>

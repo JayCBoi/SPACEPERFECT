@@ -39,36 +39,40 @@
 
             <div class="your-levels">
                 <p class="section-caption">YOUR LEVELS</p>
-
-                <?php foreach ($userMaps as $map): ?>
-                    <a href="playMap?map_id=<?= $map->getIdUserMap() ?>">
-                        <p>Title: <span><?= $map->getTitle() ?></span></p>
-                        <p>Difficulty: <span><?= $map->getDifficulty() ?>/5</span></p>
-                        <p>Clearance: <span><?= $map->getClears() ?></span></p>
-                        <p>Crashes: <span><?= $map->getCrashes() ?></span></p>
-                    </a>
-                <?php endforeach; ?>
+                
+                <?php if (!empty($userMaps)): ?>
+                    <?php foreach ($userMaps as $map): ?>
+                        <a href="playMap?map_id=<?= $map->getIdUserMap() ?>">
+                            <p>Title: <span><?= $map->getTitle() ?></span></p>
+                            <p>Difficulty: <span><?= $map->getDifficulty() ?>/5</span></p>
+                            <p>Clearance: <span><?= $map->getClears() ?></span></p>
+                            <p>Crashes: <span><?= $map->getCrashes() ?></span></p>
+                        </a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
                 
             </div>
 
             <div class="your-levels">
                 <p class="section-caption">COMMUNITY LEVELS</p>
-
-                <?php foreach ($communityMaps as $map): ?>
-                    <a href="playMap?map_id=<?= $map->getIdUserMap() ?>">
-                        <p>Title: <span><?= $map->getTitle() ?></span></p>
-                        <p>Difficulty: <span><?= $map->getDifficulty() ?>/5</span></p>
-                        <p>Clearance: <span><?= $map->getClears() ?></span></p>
-                        <p>Crashes: <span><?= $map->getCrashes() ?></span></p>
-                        <p class="author">by: <span><?= $map->getAuthor() ?></span></p>
-                    </a>
-                <?php endforeach; ?>
+                
+                <?php if (!empty($communityMaps)): ?>
+                    <?php foreach ($communityMaps as $map): ?>
+                        <a href="playMap?map_id=<?= $map->getIdUserMap() ?>">
+                            <p>Title: <span><?= $map->getTitle() ?></span></p>
+                            <p>Difficulty: <span><?= $map->getDifficulty() ?>/5</span></p>
+                            <p>Clearance: <span><?= $map->getClears() ?></span></p>
+                            <p>Crashes: <span><?= $map->getCrashes() ?></span></p>
+                            <p class="author">by: <span><?= $map->getAuthor() ?></span></p>
+                        </a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
         
     </div>
 	
     <!-- JAVASCRIPT -->
-    <script src="js/javascript.js" type="text/javascript"></script>
+    <script src="" type="text/javascript"></script>
 </body>
 </html>

@@ -194,5 +194,25 @@ class SecurityController extends AppController {
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/login");
     }
+
+    public function deleteAccount() {
+
+        session_start();
+        if (!isset($_SESSION['user'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+            exit();
+        }
+
+        $userRepository = new UserRepository();
+        $userRepository->deleteUser($_SESSION['user']->getUserId());
+
+        session_unset();
+        session_destroy();
+        
+        return $this->render('login', ['messages' => ['Account deleted.']]);
+        
+
+    }
     
 }

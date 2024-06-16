@@ -32,6 +32,36 @@ class User {
 
     }
 
+    public function incrementMapsBuilt() {
+
+        $this->maps_built += 1;
+
+    }
+
+    public function decrementMapsBuilt() {
+
+        $this->maps_built -= 1;
+
+    }
+
+    public function incrementLevelsCleared() {
+
+        $this->levels_cleared += 1;
+
+    }
+
+    public function incrementCampaignLevelsCleared() {
+
+        $this->campaign_levels_cleared += 1;
+
+    }
+
+    public function incrementCrashes() {
+
+        $this->crashes += 1;
+
+    }
+
     public function changeToDate() {
 
         $dateTime = new DateTime($this->created_at);
@@ -113,7 +143,7 @@ class User {
 
     public function getCampaignLevelsCleared(): int {
 
-        return $this->levels_cleared;
+        return $this->campaign_levels_cleared;
 
     }
 

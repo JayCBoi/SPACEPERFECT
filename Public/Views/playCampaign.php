@@ -16,23 +16,27 @@
     <div></div>
     <div class="bar3"></div>
     <div class="bar4"></div>
-    <div class="menu">
+    <div class="menu-game">
         <div>
             <h2>SPACE</h2>
-            <h2>PERFECTT</h2>
+            <h2>PERFECT</h2>
             <div>
-                <button id="b1">New Game</button>
+                <button id="b1">Play</button>
                 <button id="b2" onclick="scores.style.display = 'flex'">Level Info</button>
                 <button id="b3">Credits</button>
             </div>
-            <p id="credits">PZ 2024 &copy; All rights reserved</p>
+            <p id="credits">
+                PZ 2024 &copy; All rights reserved <br>
+            </p>
+            <h7><a href="levelSelect">BACK</a></h7>
         </div>
         <section id="scores" class="highscores">
             <div>
                 <div>
                     <h4>Level Info</h4>
                     <div id="best">
-                        <p>Lint<span>1232</span></p>
+                        <p>Title<span><?php echo $map->getTitle();?></span></p>
+                        <p>Level<span><?php echo $map->getMapIndex();?></span></p>
                     </div>
                     <button onclick="scores.style.display = 'none'">OK</button>
                 </div>
@@ -57,8 +61,10 @@
         <div>
             <div>
                 <h4>YOU'VE WON!</h4>
-                <input name="winner" placeholder="TYPE YOUR NAME">
-                <button id="won">SUBMIT</button>
+                <form action="winCampaign" method="POST">
+                    <input type="hidden" name="map_index" value="<?php echo $map->getMapIndex(); ?>">
+                    <button type="submit">EASY!</button>
+                </form>
             </div>
         </div>
     </div>
@@ -66,13 +72,22 @@
         <div>
             <div>
                 <h4>YOU LOSE</h4>
-                <button onclick="location.reload()">OK</button>
+                <form action="loseCampaign" method="POST">
+                    <input type="hidden" name="map_index" value="<?php echo $map->getMapIndex(); ?>">
+                    <button type="submit">OK :(</button>
+                </form>
             </div>
         </div>
     </div>
     <div class="levelHidd"></div>
 	
     <!-- JAVASCRIPT -->
+     <script type="text/javascript">
+        var campaignMap = JSON.parse(<?php echo json_encode($map->getMapCode());?>);
+    
+        console.log(typeof(campaignMap))
+
+     </script>
     <script src="public/js/javascript.js" type="text/javascript"></script>
 </body>
 </html>
