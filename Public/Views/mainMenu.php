@@ -58,6 +58,6 @@
     </div>
 	
     <!-- JAVASCRIPT -->
-    <script src="" type="text/javascript"></script>
+    <script src="public/js/welcomeMessage.js" type="text/javascript"></script>
 </body>
 </html>
